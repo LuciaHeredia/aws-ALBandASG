@@ -43,8 +43,14 @@
     - In "Listeners and routing", add listener for HTTP(80), create **target group**: target type:instances, name, protocol HTTP(80), your VPC.
     - Press: Create.
 ### Step 3: Auto Scaling Group (ASG):
-* Create an Auto Scaling Group that utilizes the previously defined launch template for launching instances.
-* Configure the ASG to automatically attach newly launched instances to the appropriate ALB target groups.
+* Create an **ASG** that utilizes the previously defined **launch template** for launching instances,
+  Configure the **ASG** to automatically attach newly launched instances to the appropriate **ALB target groups**:
+  - EC2 Dashboard -> Auto Scaling -> Auto Scaling Groups -> Create and Set:
+    - Name.
+    - Launch template that we created.
+    - VPC, Availability Zones and subnets.
+    - Load balancing -> Attach to an existing load balancer -> Choose from your load balancer target groups.
+    - Press: Create.
 ### Step 4: Auto Scaling Policies:
 * Implement auto scaling policies based on CPU utilization to dynamically scale the ASG.
 * Set up policies to scale the ASG up and down according to the defined CPU thresholds.
