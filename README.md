@@ -25,7 +25,7 @@
 * Create a launch template for EC2 instances, <br/>
   Ensure the launch template includes specifications for the instances to have Nginx or Apache installed and properly configured, <br/>
   Include a **userdata script** in the launch template that dynamically fetches the public IP of the instance and updates the **index.html** file with this information.
-  - EC2 Dashboard -> Instances -> Launch Templates -> Create:
+  - EC2 Dashboard -> Instances -> Launch Templates -> Create and Set:
     - Name, description, AMI ID, Instance type.
     - SSH key pair.
     - Select one of the public subnets. (depends on the **VPC** you're going to use)
@@ -33,11 +33,15 @@
     - EBS volume.
     - In "Advanced details" -> "user data": upload [userdata.sh](https://github.com/LuciaHeredia/aws-ALBandASG/blob/main/userdata.sh) file.
     - Press: Create.
-  
 ### Step 2: Application Load Balancer (ALB):
-* Create an Application Load Balancer in a public subnet.
-* Configure listeners on ports 80 for http traffic
-* Set up target groups for each listener to manage the instances.
+* Create an Application Load Balancer in a public subnet, <br/>
+  Configure listeners on ports 80 for http traffic, <br/>
+  Set up target groups for each listener to manage the instances:
+  - EC2 Dashboard -> Load Balancing -> Load Balancers -> Create -> Application Load Balancer -> Create and Set:
+    - Name.
+    - VPC, Availability Zones, Security group as above.
+    - In "Listeners and routing", add listener for HTTP(80), create **target group**: target type:instances, name, protocol HTTP(80), your VPC.
+    - Press: Create.
 ### Step 3: Auto Scaling Group (ASG):
 * Create an Auto Scaling Group that utilizes the previously defined launch template for launching instances.
 * Configure the ASG to automatically attach newly launched instances to the appropriate ALB target groups.
