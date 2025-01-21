@@ -50,15 +50,19 @@
     - Launch template that we created.
     - VPC, Availability Zones and subnets.
     - Load balancing -> Attach to an existing load balancer -> Choose from your load balancer target groups.
+* Implement **auto scaling policies** based on CPU utilization to dynamically scale the ASG, <br/>
+  Set up policies to scale the ASG up and down according to the defined CPU thresholds:
+  - Continue **ASG** setup:
+    - In "Group size" -> Desired capacity:2.
+    - In "Scaling" -> Automatic scaling -> Target tracking scaling policy -> Metric type:Avg CPU utilization, Target value:30.
+    - In "Additional settings" -> Monitoring -> Enable group metrics collection within CloudWatch.
+* Configure **health checks** for the ASG by implementing checks on the application health endpoint of each instance, <br/>
+  Define criteria for identifying unhealthy instances, <br/>
+  Configure the ASG to terminate and replace unhealthy instances automatically:
+  - Continue **ASG** setup:
+    - In "Health checks" -> Turn on Elastic Load Balancing
     - Press: Create.
-### Step 4: Auto Scaling Policies:
-* Implement auto scaling policies based on CPU utilization to dynamically scale the ASG.
-* Set up policies to scale the ASG up and down according to the defined CPU thresholds.
-### Step 5: Health Checks:
-* Configure health checks for the ASG by implementing checks on the application health endpoint of each instance.
-* Define criteria for identifying unhealthy instances.
-* Configure the ASG to terminate and replace unhealthy instances automatically.
-### Step 6: Testing:
+### Step 4: Testing:
 * Test the entire setup by generating load on the ALB.
 * Verify that the ASG responds dynamically to the increased load by scaling out.
 * Confirm that the ASG also scales in automatically when the load decreases.
