@@ -1,7 +1,16 @@
 # Explanation:
-## ALB:
+## ALB (Application Load Balancer):
+* **AWS ALB** is a **feature** of **Elastic Load Balancing**.
+* **Traffic Distribution**: They automatically distribute traffic to healthy targets (such as: EC2 instances, containers, IP addresses, in one or more Availability Zones (AZs)), improving application availability and responsiveness.
+* **Traffic Routing**: It operates at the **application level (Layer 7) of the OSI model**, allowing it to route traffic based on the content of the request, including the host and path.
 
-## ASG:
+## ASG (Auto Scaling Group):
+* **AWS ASG** is a key component of **AWS’s scalable infrastructure**.
+* **Dynamic Scaling**: **ASGs** can scale out (increase the number of instances) and scale in (decrease the number of instances) based on predefined policies and metrics, such as CPU utilization or network traffic.
+* **Launch Configurations and Templates**: These define how new instances are launched, including the AMI (Amazon Machine Image), instance type, and security groups.
+* **Traffic Distribution**: **ASGs** automatically register new instances with a **load balancer**, distributing traffic evenly across all instances.
+* **Cost Optimization**: You only pay for the **EC2 instances** that are spun up and down, and **ASGs** themselves are free.
+* **Monitoring**: You can monitor **ASGs** in the **AWS Management Console** to see instances scaling in and out based on the load.
 
 <br/>
 
