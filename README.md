@@ -1,8 +1,15 @@
+# Introduction:
+ This is a guide for implementing a Dynamic Auto-Scaling Web Application Deployment with Public IP Display.
+  
+<br/>
+
 # Explanation:
 ## ALB (Application Load Balancer):
 * **AWS ALB** is a **feature** of **Elastic Load Balancing**.
 * **Traffic Distribution**: They automatically distribute traffic to healthy targets (such as: EC2 instances, containers, IP addresses, in one or more Availability Zones (AZs)), improving application availability and responsiveness.
 * **Traffic Routing**: It operates at the **application level (Layer 7) of the OSI model**, allowing it to route traffic based on the content of the request, including the host and path.
+ 
+<br/>
 
 ## ASG (Auto Scaling Group):
 * **AWS ASG** is a key component of **AWS’s scalable infrastructure**.
@@ -12,14 +19,20 @@
 * **Cost Optimization**: You only pay for the **EC2 instances** that are spun up and down, and **ASGs** themselves are free.
 * **Monitoring**: You can monitor **ASGs** in the **AWS Management Console** to see instances scaling in and out based on the load.
 
-<br/>
-
-# Tasks + Steps:
+# Task + Steps:
 ## Mission: Dynamic Auto-Scaling Web Application Deployment with Public IP Display
 ### Step 1: Launch Template for EC2 Instances:
-* Create a launch template for EC2 instances.
-* Ensure that the launch template includes specifications for the instances to have Nginx or Apache installed and properly configured.
-* Include a user data script in the launch template that dynamically fetches the public IP of the instance and updates the index.html file with this information.
+* Create a launch template for EC2 instances, <br/>
+  Ensure the launch template includes specifications for the instances to have Nginx or Apache installed and properly configured, <br/>
+  Include a **userdata script** in the launch template that dynamically fetches the public IP of the instance and updates the **index.html** file with this information.
+  - EC2 Dashboard -> Instances -> Launch Templates -> Create:
+    - Name, description, AMI ID, Instance type.
+    - SSH key pair.
+    - Select one of the public subnets. (depends on the **VPC** you're going to use)
+    - Create a security group: name, description, inbound rules allowing SSH(22) and HTTP(80), with protocol:TCP and source:Anywhere.
+    - EBS volume.
+    - in Advanced details -> user data: upload userdata.sh file.
+  
 ### Step 2: Application Load Balancer (ALB):
 * Create an Application Load Balancer in a public subnet.
 * Configure listeners on ports 80 for http traffic
@@ -39,3 +52,6 @@
 * Verify that the ASG responds dynamically to the increased load by scaling out.
 * Confirm that the ASG also scales in automatically when the load decreases.
 * Check the index.html file on instances to ensure that it displays the public IP dynamically.
+
+*Author*: [LuciaHeredia](https://github.com/LuciaHeredia)
+
