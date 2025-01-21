@@ -61,12 +61,19 @@
   Configure the ASG to terminate and replace unhealthy instances automatically:
   - Continue **ASG** setup:
     - In "Health checks" -> Turn on Elastic Load Balancing
-    - Press: Create.
+    - Press: Create -> EC2 instances will be launched from the **instance template** from above.
 ### Step 4: Testing:
-* Test the entire setup by generating load on the ALB.
-* Verify that the ASG responds dynamically to the increased load by scaling out.
-* Confirm that the ASG also scales in automatically when the load decreases.
-* Check the index.html file on instances to ensure that it displays the public IP dynamically.
+* Test the entire setup by generating load on the ALB:
+  - EC2 dashboard -> Load Balancing -> Load Balancers -> Select the **ALB** created and copy the **DNS name** details, paste it on a browser tab and load the page.
+* Verify that the ASG responds dynamically to the increased load by scaling out, <br/>
+  Confirm that the ASG also scales in automatically when the load decreases:
+  - To see changes:
+    - EC2 Dashboard -> Auto Scaling -> Auto Scaling Groups -> Select your **ASG** -> Monitoring -> Auto Scaling -> watch the graphs.
+    - EC2 Dashboard -> See the Running Instances.
+  - To creaste instant changes:
+    - EC2 Dashboard -> Auto Scaling -> Auto Scaling Groups -> Select your **ASG** -> Edit and change instances capacity.
+* Check the index.html file on instances to ensure that it displays the public IP dynamically:
+  - 
 
 *Author*: [LuciaHeredia](https://github.com/LuciaHeredia)
 
