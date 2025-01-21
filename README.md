@@ -78,7 +78,11 @@
     ```
     cat /var/www/html/index.html
     ```
-  - You can do the same with other running instances and see it displays the public IP dynamically.
+  - You can do the same with other running instances and see it displays their public IP individualy.
+  - To see that it displays the public IP dynamically:
+    - EC2 dashboard -> Load Balancing -> Load Balancers -> Select the **ALB** created and copy the **DNS name** details, paste it on a browser tab and load the page.
+    - Refreshing the page will give us a different public IP (depending on how many instances are running).
+
 
 *Author*: [LuciaHeredia](https://github.com/LuciaHeredia)
 
