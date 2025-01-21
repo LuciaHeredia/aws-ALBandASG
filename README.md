@@ -8,8 +8,6 @@
 * **AWS ALB** is a **feature** of **Elastic Load Balancing**.
 * **Traffic Distribution**: They automatically distribute traffic to healthy targets (such as: EC2 instances, containers, IP addresses, in one or more Availability Zones (AZs)), improving application availability and responsiveness.
 * **Traffic Routing**: It operates at the **application level (Layer 7) of the OSI model**, allowing it to route traffic based on the content of the request, including the host and path.
- 
-<br/>
 
 ## ASG (Auto Scaling Group):
 * **AWS ASG** is a key component of **AWS’s scalable infrastructure**.
@@ -18,6 +16,8 @@
 * **Traffic Distribution**: **ASGs** automatically register new instances with a **load balancer**, distributing traffic evenly across all instances.
 * **Cost Optimization**: You only pay for the **EC2 instances** that are spun up and down, and **ASGs** themselves are free.
 * **Monitoring**: You can monitor **ASGs** in the **AWS Management Console** to see instances scaling in and out based on the load.
+
+<br/>
 
 # Task + Steps:
 ## Mission: Dynamic Auto-Scaling Web Application Deployment with Public IP Display
@@ -31,7 +31,8 @@
     - Select one of the public subnets. (depends on the **VPC** you're going to use)
     - Create a security group: name, description, inbound rules allowing SSH(22) and HTTP(80), with protocol:TCP and source:Anywhere.
     - EBS volume.
-    - in Advanced details -> user data: upload userdata.sh file.
+    - In "Advanced details" -> "user data": upload [userdata.sh](https://github.com/LuciaHeredia/aws-ALBandASG/blob/main/userdata.sh) file.
+    - Press: Create.
   
 ### Step 2: Application Load Balancer (ALB):
 * Create an Application Load Balancer in a public subnet.
