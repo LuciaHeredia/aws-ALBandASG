@@ -68,12 +68,17 @@
 * Verify that the ASG responds dynamically to the increased load by scaling out, <br/>
   Confirm that the ASG also scales in automatically when the load decreases:
   - To see changes:
-    - EC2 Dashboard -> Auto Scaling -> Auto Scaling Groups -> Select your **ASG** -> Monitoring -> Auto Scaling -> watch the graphs.
+    - EC2 Dashboard -> Auto Scaling -> Auto Scaling Groups -> Select your **ASG** -> Monitoring -> Auto Scaling -> Watch the graphs.
     - EC2 Dashboard -> See the Running Instances.
-  - To creaste instant changes:
+  - To create instant changes:
     - EC2 Dashboard -> Auto Scaling -> Auto Scaling Groups -> Select your **ASG** -> Edit and change instances capacity.
 * Check the index.html file on instances to ensure that it displays the public IP dynamically:
-  - 
+  - EC2 Dashboard -> Select a running instance -> Connect -> EC2 Instance Connect -> Connect.
+  - To see it displays the public IP of this instance:
+    ```
+    cat /var/www/html/index.html
+    ```
+  - You can do the same with other running instances and see it displays the public IP dynamically.
 
 *Author*: [LuciaHeredia](https://github.com/LuciaHeredia)
 
